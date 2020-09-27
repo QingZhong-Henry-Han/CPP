@@ -11,6 +11,8 @@ using namespace std;
 
 //Examples:
 
+// input a decimal value and output a binary
+
 //Input: arr[] = {1, 2, 3, 4}
 //Output: 7
 //The subarray {3, 4} has maximum XOR value
@@ -28,6 +30,31 @@ class Solution
   
 public:
 
+  // convert int n to a binary
+  long long convert(int n)
+  {
+    long long bin = 0;
+    int rem, i = 1, step = 1;
+    while (n != 0)
+    {
+        rem = n % 2;
+        printf("Step %d: %d/2, Remainder = %d, Quotient = %d\n", step++, n, rem, n / 2);
+        n /= 2;
+        bin += rem * i;
+        i *= 10;
+    }
+    return bin;
+  }
+
+  void testConvertDecimalToBinary()
+  {
+    int n;
+    printf("Enter a decimal number: ");
+    scanf("%d", &n);
+    printf("%d in decimal = %lld in binary\n", n, convert(n));    
+  }
+
+  
   int findMinXORValue(int arr[], int N)
   {
     int res_index = 0;
@@ -139,13 +166,14 @@ public:
 int main(int argc, char* argv[] )
 {
    Solution s;
+   s.testConvertDecimalToBinary();
    //s.SwapTwoIntegersXor();
-   s.TestCases();
+   //s.TestCases();
 
-   for( int i = 1; i < 5; i++)
-     {
-       cout << " i = " << i << " : " << s.findNthMagicNumber(i) << "\n";
-     }
+   //   for( int i = 1; i < 5; i++)
+   //  {
+   //    cout << " i = " << i << " : " << s.findNthMagicNumber(i) << "\n";
+   //  }
    
   return 0;
 }
