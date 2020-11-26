@@ -9,7 +9,10 @@ class Graph
   int numVertex;
   int numEdge;
 
-  list<int>*           m_adjL;
+  // graph can be described as a list
+  list<int>*  m_adjL;
+
+  // graph can be described as vector's vector
   vector<vector<int>>  m_adjVV;
 
   //Adjacent matrix
@@ -23,15 +26,18 @@ public:
 
   // A utility function to add an edge in an 
   // undirected graph. 
-  void addEdgeVV(int v, int w);
   void addEdgeL(int u, int v);
+  void addEdgeVV(int v, int w);
   void addEdgeM(int start, int e);
 
   void DFSUtilList(list<int>* adjL, int v, bool visited[]); 
-  void DFSList(list<int>* adjL, int v); 
-  void DFSUtilVV(vector<vector<int>> adjVV, int v, bool visited[]); 
+  void DFSList(list<int>* adjL, int v);
+  
+  void DFSUtilVV(vector<vector<int>> adjVV, int v, bool visited[]);
   void DFSVV(int v, vector<int>& comp, bool* visited); 
   void BFSVV(vector<vector<int>> adjVV, int start);
+
+  // get connnected components
   void ConnectedComponents();
 
   // A utility function to print the adjacency list 
@@ -86,7 +92,7 @@ Graph::Graph(int v )
   m_adjL = new list<int>[numVertex];
 }
 
-// Function to fill the empty adjacency matrix 
+// ctor with the vertexes and edges
 Graph::Graph(int v, int e) 
 { 
     this->numVertex = v; 
@@ -109,23 +115,25 @@ Graph::Graph(int v, int e)
 
 Graph::~Graph(){}
 
+// add undirected edges
 void Graph::addEdgeVV(int u, int v) 
 {
   m_adjVV[u].push_back(v); 
   m_adjVV[v].push_back(u); 
 }
 
+// add edge to the list
 void Graph::addEdgeL(int u, int v)
 {
   m_adjL[u].push_back(v);
 }
 
 //Function to add an edge to the graph
-void Graph::addEdgeM(int start, int e)
+void Graph::addEdgeM(int start, int end)
 {
   // Considering a biDirection edge
-  m_adjM[start][e] = 1;
-  m_adjM[e][start] = 1;  
+  m_adjM[start][end] = 1;
+  m_adjM[end][start] = 1;  
 }
 
 //DFSUtilList function
@@ -259,6 +267,49 @@ void Graph::ConnectedComponents()
 	  cout << endl;	  
 	}
     }
+}
+
+// the problem
+// suppose we have following stations {"LYN", "YAT" "JAV", "CYA", "LAN" }
+// we have the following routers {{"LYN", "YAT"},
+//                                {"LYN", "JAV"},
+//                                {"YAT", "CYA"},
+//                                {"YAT", "LYN"},
+//                                {"JAV", "LYN"},
+//                                {"JAV", "LAN"}}
+// how to add a route from "LAN" to other stations to make it can reach any other stations.
+
+void solve()
+{
+  // suppose
+  // LYN = 0
+  // YAT = 1,
+  // JAV = 2,
+  // CYA = 3,
+  // LAN = 4
+
+  vector<vector<int>> routes;
+  
+  // created the routes
+  vector<int> v0;
+  v0.push_back(1);
+  v0.push_back(2);
+  routes.push_back(v0);
+
+  vector<int> v1;
+  v1.push_back(0);
+  v1.push_back(3);
+
+  vector<int> v2;
+  v2.push_back(4);
+  routes.push_back(v2);
+
+  vector<int> v3;
+  routes.push_back(v3);
+
+  vector<int> v4;
+  routes.push_back(v4);
+ 
 }
 
 
