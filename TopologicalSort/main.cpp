@@ -1,11 +1,11 @@
-// this is the routine for graph component
+// this is the routine for directed graph component
 // In the graph there are three common search
 //  // task  job scheduling:
 //  given directed acyclic graph DAG)
 //   order all vertices so that all edges pointer from
 //   lower order to high order
 // 1) TopologicalSort
-//   run DES and output reverse at fi nishing time.
+//   run DES and output reverse at finishing time.
 //  for V E  O(V+E)
 
 #include <bits/stdc++.h>
@@ -57,15 +57,13 @@ void Graph::addEdge(int v, int u)
   m_adj[v].push_back(u); 
 }
 
-//TSUtil function, go from high oerder to lower order
+//TSUtil function, go from high order to lower order
 void Graph::TSUtil(int v, bool* visited, stack<int>& result)
 { 
     for (auto it = m_adj[v].begin(); it != m_adj[v].end(); ++it)
      {
-	  {
-	    TSUtil(*it, visited, result);
-	  }
-      }
+       TSUtil(*it, visited, result);
+     }
 
     if (!visited[v])
       {
