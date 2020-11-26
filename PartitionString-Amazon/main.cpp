@@ -1,4 +1,5 @@
-//Given a string S of lowercase letters, partition S into as many as parts so that one letter only appear in one part. Return the partitions as a list.
+//Given a string S of lowercase letters, partition S into as many as parts so that one letter only appear in one part.
+// Return the partitions as a list.
 //Example 1:
 //
 //Input:
@@ -17,6 +18,11 @@
 
 using namespace std;
 
+void printC(int i)
+{
+  printf(" %d ", i);
+}
+
 class Solution
 {
   
@@ -34,9 +40,14 @@ public:
     
     for(int i = 0; i < s.size(); i++) 
       {
+	cout << s[i]-'a' << " : " << i << endl;
 	lastIndexes[s[i]-'a'] = i;
       }
 
+    //print out the elements
+    for_each(lastIndexes, lastIndexes+26, printC);
+    cout << endl;
+    
     int i = 0;
     while(i < s.size())
       {
@@ -59,8 +70,8 @@ public:
 
   void TestCase()
   {
-    //string s("bbeadcxede");
-    string s("ababcbacadefegdehijhklij");
+    string s("bbeadcxede");
+    //string s("ababcbacadefegdehijhklij");
     vector<int> result = PartitionS(s);
     for( auto it = result.begin(); it != result.end(); it++)
       {
