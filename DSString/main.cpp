@@ -19,7 +19,7 @@
 // 17. how to remove the duplicate character from String? (solution)
 // 18. How to find the maximum occurring character in given String? (solution)
 // 19. How do you remove a given character from String? (solution)
-//
+// 20. How to check if the string is Palindrome
 
 
 #include <bits/stdc++.h>
@@ -72,7 +72,8 @@ public:
     cout << "\n";
   }
 
-  //Q3. 
+  //Q3.
+  // two string has the same characters
   bool anagramCheck(string s1, string s2)
   {
     if(s1.length() != s2.length())
@@ -151,6 +152,72 @@ public:
     
   }
 
+  // 18. How to find the maximum occurring character in given String? (solution)
+  char findTheMaxOccurrCharIn(char* str)
+  {
+    if (str == nullptr)
+      {
+	return NULL;
+      }
+
+    int freq[26] ={0};
+
+    while( *str != '\0' )
+      {
+	char c = tolower(*str);
+	if( c >= 'a' and c <= 'z')
+	  {
+	    freq[c-'a']++;	      
+	  }
+	str++;
+      }
+
+    int max = -1;
+    char result;
+    for(int i = 0; i < 26; i++)
+      {
+	if(max < freq[i])
+	  {
+	    max = freq[i];
+	    result = (char)(i+'a');
+	  }
+      }
+    
+    return result;
+  }
+
+  void TestQ18()
+  {
+    char str[] = "Zzz ZZZ AAA z a ccc ";
+    cout << "Maximum char is:" << findTheMaxOccurrCharIn(str) << endl;
+  }
+
+  // 20. How to check if the string is Palindrome
+  bool isStringPalindrome(string s)
+  {
+    // if string is empty
+    if(s.size() == 0)
+      {
+	return false;
+      }
+    
+    bool bResult = true;
+
+    int i = 0;
+    int j = s.size()-1;
+    do{
+      if(s[i] != s[j])
+	{
+	  bResult = false;
+	  break;
+	}
+      i++;
+      j--;
+    }while(i<j);
+
+    return bResult;
+  }
+
   void TestQ1()
   {
     char s[] = {'h','e','l', 'l', 'o'};
@@ -191,7 +258,16 @@ public:
   void TestQ5()
   {
 
-  }  
+  }
+
+  void TestQ20()
+  {
+    string answer = isStringPalindrome("radar")? "a palindrome " : " not a palindrome ";
+    cout << "radar is " << answer << endl ; 
+
+    answer = isStringPalindrome("raddar")? "a palindrome " : " not a palindrome ";
+    cout << "raddar is " << answer << endl ; 
+  }
  
 };
 
@@ -204,7 +280,8 @@ int main(int argc, char* argv[] )
    //s.TestQ2();
    //s.TestQ3();
    s.TestQ4();
-   //s.TestQ5();
+   //s.TestQ18();
+   //s.TestQ20();
    
   return 0;
 }
