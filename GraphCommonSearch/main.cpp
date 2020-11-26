@@ -3,6 +3,7 @@
 // 1) Breadth First Search(BFS) :  each "Level" of the tree is visited in order.
 // 2) Depth First Pre-order Search (DFS) : Children nodes are visited before sibling nodes.
 // 3) Depth First Post-order Search (DFS) : A node is not visited until all its children are reached.
+// Complex O(V+E)
 
 #include <bits/stdc++.h>
 
