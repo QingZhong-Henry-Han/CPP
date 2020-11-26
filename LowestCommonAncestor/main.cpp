@@ -158,6 +158,11 @@ Node* find_LCA(Node* root, int node1, int node2)
 int main(int argc, char* argv[] )
 {
 
+  //               1
+  //             /   \
+  //            2     3
+  //          /  \   / \
+  //         4    5 6   7
   
   Node* root = newNode(1);
   root->pLeft = newNode(2);
