@@ -76,8 +76,7 @@ void BFS(vector<int> graph[], int start)
 
 // This function calculates the distance of each 
 // vertex from nearest source 
-void nearestTown(vector<int> graph[], int n, 
-					int sources[], int S) 
+void nearestTown(vector<int> graph[], int n, int sources[], int S) 
 { 
 
 	// reseting the source hash array 
