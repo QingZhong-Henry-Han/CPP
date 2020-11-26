@@ -1,5 +1,5 @@
 //
-// for array data strcture
+// for array data structure
 //1.How do you find the missing number in a given integer array of 1 to 100? (solution)
 //2.How do you find the duplicate number on a given integer array? (solution)
 //3.How do you find the largest and smallest number in an unsorted integer array? (solution)
@@ -24,6 +24,8 @@ class Solution
 public:
 
   //Q1.
+  // Theorem:
+  //
   void findOneMissingNum(int &missingNum, int nums[], int N)
   {
     for( int i = 0; i < N; i++)
@@ -33,6 +35,8 @@ public:
   }
 
   //Q2.
+  // Theorem:
+  //
   void findOneDuplicateNum(int &duplicateNum, int nums[], int N)
   {
     for(int i = 0; i < N; i++)
@@ -46,12 +50,14 @@ public:
       }
   }
 
-  //Q3. 
+  //Q3.
+  // Theorem:
+  //
   void findTheLargestNSmallestNum(int &maxNum, int &minNum, int nums[], int N)
   {
-    int*  pMax = max_element(nums, nums+N);
+    int*  pMax = std::max_element(nums, nums+N);
     maxNum = *pMax;
-    int* pMin = min_element(nums, nums+N);
+    int* pMin = std::min_element(nums, nums+N);
     minNum = *pMin;
   }
 
@@ -115,6 +121,7 @@ public:
     
   }
 
+  // this is for priority_queue ( HEAP SORT)
   void TestQ0()
   {
     priority_queue<int, vector<int>> maxHeap;
@@ -146,6 +153,8 @@ public:
   {
     int N = 10;
     int arr[] = {0,1,2,3,5,6,7,8,9,10};
+    //int N = 12;
+    //int arr[] = {0,1,2,3,4,5,6,7,8,9,10,12};
 
     int missingNum = N;
     findOneMissingNum(missingNum, arr, N);
@@ -206,11 +215,11 @@ int main(int argc, char* argv[] )
 {
    Solution s;
    //s.TestQ0();
-   //s.TestQ1();
+   s.TestQ1();
    //s.TestQ2();
    //s.TestQ3();
    //s.TestQ4();
-   s.TestQ5();
+   //s.TestQ5();
    
   return 0;
 }
