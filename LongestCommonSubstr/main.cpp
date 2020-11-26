@@ -1,5 +1,18 @@
 // dynamic programming
 // look for longest common substring in two string
+
+//Base Cases: If any of the string is null then LCS will be 0.
+//Check if ith character in one string A is equal to jth character in string B
+//Case 1: both characters are same
+//LCS[i][j] = 1 + LCS[i-1][j-1]
+//(add 1 to the result and remove the last character from both the strings and
+//check the result for the smaller string.)
+
+//Case 2: both characters are not same.
+//LCS[i][j] = 0
+//At the end, traverse the matrix and find the maximum element in it,
+//This will the length of Longest Common Substring.
+//  
 //
 // knapsack problem
 //
@@ -7,6 +20,7 @@
 //determine the number of each item to include in a collection
 //so that the total weight is less than or equal to a given limit
 // and the total value is as large as possible
+//
 
 #include <bits/stdc++.h>
 
