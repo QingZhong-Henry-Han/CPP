@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// Radix sort example
+// RadixSort
 class RadixSortSolution
 {
 
@@ -259,7 +259,12 @@ public:
      vector<vector<int>> e3{{0,2}};
      cout << orangesRotting(e3) << "\n";
    }
-
+  
+  // The Zombie 
+  // Given a 2D grid, each cell is either a zombie 1 or a human 0. Zombies
+  // can turn adjacent (up/down/left/right) human beings into zombies every hour.
+  // Find out how many hours does it take to infect all humans?
+  
   // Input:
   //[[0, 1, 1, 0, 1],
   //[0, 1, 0, 1, 0],
